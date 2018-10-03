@@ -25,7 +25,7 @@ import java.util.Map;
  * Explanation: The answer is "wke", with the length of 3.
  * Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
  */
-public class LongestSubstringWithoutRepeatingCharacters3 {
+public class P3_LongestSubstringWithoutRepeatingCharacters {
   @Test
   public void test() {
     String s = "abcabxxxxdfsafasfadsfadsfdasfdsafsafdsafasfafafscbb你好，我是打野，请问他在干什么";

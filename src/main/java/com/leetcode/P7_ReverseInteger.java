@@ -20,7 +20,7 @@ import org.junit.Test;
  *
  */
 
-public class ReverseInteger7 {
+public class P7_ReverseInteger {
   @Test
   public void test() {
     System.out.println(reverse(-15));

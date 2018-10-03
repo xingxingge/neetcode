@@ -2,7 +2,7 @@ package com.leetcode;
 
 import org.junit.Test;
 
-public class ZigZagConversion6 {
+public class P6_ZigZagConversion {
   @Test
   public void test1() {
     String s = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx";
