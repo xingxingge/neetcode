@@ -6,11 +6,11 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class P23_MergekSortedLists {
-  ListNode l1 = Wrapper.stringToListNode("1,3,4,5");
-  ListNode l2 = Wrapper.stringToListNode("1,2,3,4");
-  ListNode l3 = Wrapper.stringToListNode("3,3,5,7");
-  ListNode l4 = Wrapper.stringToListNode("2,2,3,4");
-  ListNode l5 = Wrapper.stringToListNode("2,2,3,4");
+  ListNode l1 = Wrapper.stringToListNode("[1,3,4,5]");
+  ListNode l2 = Wrapper.stringToListNode("[1,2,3,4]");
+  ListNode l3 = Wrapper.stringToListNode("[3,3,5,7]");
+  ListNode l4 = Wrapper.stringToListNode("[2,2,3,4]");
+  ListNode l5 = Wrapper.stringToListNode("[2,2,3,4]");
   ListNode[] listNodes = new ListNode[]{l1, l2, l3, l4, l5};
 
   @Test

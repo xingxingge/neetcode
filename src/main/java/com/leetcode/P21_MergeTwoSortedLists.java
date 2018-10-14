@@ -5,23 +5,8 @@ import org.junit.Test;
 public class P21_MergeTwoSortedLists {
   @Test
   public void test() {
-    ListNode l1 = new ListNode(1);
-    ListNode l2 = new ListNode(2);
-    ListNode l3 = new ListNode(2);
-    ListNode l4 = new ListNode(4);
-
-    ListNode r1 = new ListNode(1);
-    ListNode r2 = new ListNode(3);
-    ListNode r3 = new ListNode(3);
-    ListNode r4 = new ListNode(4);
-    l1.next = l2;
-    l2.next = l3;
-    l3.next = l4;
-
-    r1.next = r2;
-    r2.next = r3;
-    r3.next = r4;
-
+    ListNode l1 = Wrapper.stringToListNode("[1,2,2,4]");
+    ListNode r1 = Wrapper.stringToListNode("[1,3,3,4]");
     mergeTwoLists2(l1, r1).display();
   }
 

@@ -6,7 +6,7 @@ public class P24_SwapNodesInPairs {
 
   @Test
   public void test1() {
-    ListNode l1 = Wrapper.stringToListNode("");
+    ListNode l1 = Wrapper.stringToListNode("[1,2,3,4,5,6,7]");
     Wrapper.prettyPrintLinkedList(swapPairs(l1));
 
   }
