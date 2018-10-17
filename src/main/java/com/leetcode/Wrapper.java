@@ -34,6 +34,22 @@ public class Wrapper {
     return dummyRoot.next;
   }
 
+  public static void printArray(int[] nums) {
+    if (nums == null) {
+      System.out.println(nums);
+      return;
+    }
+    System.out.print("[");
+    for (int i = 0; i < nums.length; i++) {
+      System.out.print(nums[i]);
+      if (i != nums.length - 1) {
+        System.out.print(",");
+      }
+
+    }
+    System.out.println("]");
+  }
+
   public static void prettyPrintLinkedList(ListNode node) {
     while (node != null && node.next != null) {
       System.out.print(node.val + "->");
@@ -50,8 +66,6 @@ public class Wrapper {
 
   /**
    * 二叉树
-   * @param root
-   * @return
    */
   public static String treeNodeToString(TreeNode root) {
     if (root == null) {
