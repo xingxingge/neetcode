@@ -4,6 +4,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Wrapper {
+  public static void mai(String[] args){
+	System.out.println("ff");
+	printArray( new int[]{1,2});
+  }
   public static int[] stringToIntegerArray(String input) {
     input = input.trim();
     input = input.substring(1, input.length() - 1);
