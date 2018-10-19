@@ -15,7 +15,7 @@ import org.junit.Test;
  输出：7 -> 0 -> 8
  原因：342 + 465 = 807
  */
-public class P2_AddTwoNumbers {
+public class P02_AddTwoNumbers {
 
   @Test
   public void test() {

@@ -2,7 +2,7 @@ package com.leetcode;
 
 import org.junit.Test;
 
-public class P9_PalindromeNumber {
+public class P09_PalindromeNumber {
   @Test
   public void test1(){
     System.out.println(isPalindrome(200));

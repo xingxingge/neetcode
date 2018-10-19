@@ -2,7 +2,7 @@ package com.leetcode;
 
 import org.junit.Test;
 
-public class P30_DivideTwoIntegers extends BaseTest {
+public class P29_DivideTwoIntegers extends BaseTest {
   @Test
   public void test() {
     int a = Integer.MAX_VALUE;

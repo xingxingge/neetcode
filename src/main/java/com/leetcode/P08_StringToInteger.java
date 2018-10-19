@@ -2,7 +2,7 @@ package com.leetcode;
 
 import org.junit.Test;
 
-public class P8_StringToInteger {
+public class P08_StringToInteger {
 
   @Test
   public void test() {

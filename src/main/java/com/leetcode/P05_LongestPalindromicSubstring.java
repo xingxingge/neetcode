@@ -6,7 +6,7 @@ import org.junit.Test;
  * 5. 最长回文子串
  * cabad 的回文串时aba
  */
-public class P5_LongestPalindromicSubstring {
+public class P05_LongestPalindromicSubstring {
   @Test
   public void longestPalindrome() {
     String s = "12212321";

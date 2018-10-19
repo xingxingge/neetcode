@@ -2,7 +2,7 @@ package com.leetcode;
 
 import org.junit.Test;
 
-public class P4_MedianOfTwoSortedArrays {
+public class P04_MedianOfTwoSortedArrays {
   @Test
   public void test(){
     int[] a = {1,2,3,4,5};
