@@ -3,6 +3,9 @@ package com.leetcode;
 import org.junit.Test;
 
 public class P27_RemoveElement {
+public static void main(String[] args){
+	
+}
   @Test
   public void test1(){
     int[] nums=Wrapper.stringToIntegerArray("[1,2,2,3,2,3,2,2,3]");
