@@ -5,10 +5,17 @@ import java.util.*;
 public class P30_SubstringwithConcatenationofAllWords {
   public static void main(String[] xargs) {
     P30_SubstringwithConcatenationofAllWords c = new P30_SubstringwithConcatenationofAllWords();
-    System.out.println(c.findSubstring("fobarvbarfobarfofbarfofobarxxddfo", new String[]{"fo", "ba","fo"}));
+    System.out.println(c.findSubstring("fofofoxxbarvbarfobarfofbarfofobarxxddfo", new String[]{"fo", "ba","fo","ba"}));
     System.out.println(c.findSubstring2("fobarvbarfobarfofbarfofobarxxddfo", new String[]{"fo", "ba","fo"}));
   }
 
+  /**
+   *
+   * @param s
+   * @param words
+   * @return
+   * 外循环单字符串的长度大小，循环内部以单字符串为步长，待查字符串大总大小为窗口进行处理
+   */
   public List<Integer> findSubstring(String s, String[] words) {
     List<Integer> indices = new ArrayList<>();
     if (words.length == 0) {
@@ -19,8 +26,11 @@ public class P30_SubstringwithConcatenationofAllWords {
     for (String word : words) {
       wordMap.put(word, getOrDefault(wordMap, word, 0) + 1);
     }
+    //单个字符串长度
     int wordLength = words[0].length();
+    //窗口大小
     int window = words.length * wordLength;
+
     for (int i = 0; i < wordLength; i++) {
       //move a word's length each time
       for (int j = i; j + window <= s.length(); j = j + wordLength) {
@@ -34,6 +44,7 @@ public class P30_SubstringwithConcatenationofAllWords {
           int count = getOrDefault(map, word, 0) + 1;
           //if the num of the word is greater than wordMap's, move (k * wordLength) and break
           if (count > getOrDefault(wordMap, word, 0)) {
+            //已经不符合规范了，没有必要再按照单字符长度进行步长向后了，可以直接跳过这部分数据了，实现了一定程度的优化
             j = j + k * wordLength;
             break;
           } else if (k == 0) {
