@@ -6,6 +6,7 @@ public class P30_SubstringwithConcatenationofAllWords {
   public static void main(String[] xargs) {
     P30_SubstringwithConcatenationofAllWords c = new P30_SubstringwithConcatenationofAllWords();
     System.out.println(c.findSubstring("fobarvbarfobarfofbarfofobarxxddfo", new String[]{"fo", "ba","fo"}));
+    System.out.println(c.findSubstring2("fobarvbarfobarfofbarfofobarxxddfo", new String[]{"fo", "ba","fo"}));
   }
 
   public List<Integer> findSubstring(String s, String[] words) {
@@ -55,6 +56,8 @@ public class P30_SubstringwithConcatenationofAllWords {
 
   /**
    * 效率比较底下，时间时间复杂度可能为0(n^2)
+   * 从0下标开始遍历整个字符串，选择对应长度的字符串，判断是否满足条件
+   * 注意输入的字符串数组中可能有重复的字符串
    */
   public List<Integer> findSubstring2(String s, String[] words) {
     final Map<String, Integer> counts = new HashMap<>();
@@ -62,7 +65,9 @@ public class P30_SubstringwithConcatenationofAllWords {
       counts.put(word, getOrDefault(counts, word, 0) + 1);
     }
     final List<Integer> indexes = new ArrayList<>();
-    final int n = s.length(), num = words.length, len = words[0].length();
+    final int n = s.length(),//输入字符串长度
+            num = words.length,//待查询字符数组长度，3
+            len = words[0].length();//单个字符串大小
     for (int i = 0; i < n - num * len + 1; i++) {
       final Map<String, Integer> seen = new HashMap<>();
       int j = 0;
