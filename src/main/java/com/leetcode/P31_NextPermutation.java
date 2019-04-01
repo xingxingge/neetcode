@@ -27,7 +27,9 @@ public class P31_NextPermutation {
   }
 
   /**
-   * 从最后开始，依次交换数据
+   * 5 2 6 3 2
+   * 关键思路：从最右开始，找到第一个左边比右边小的数，记下索引i，再次从最右开始，找到第一个比nums[i]
+   * 大的数nums[j]，交换nums[i]和nums[j]，剩下i右边的数进行倒转（就是实现了排序）
    */
   public void nextPermutation(int[] nums) {
     int i = nums.length - 2;
