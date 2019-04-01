@@ -8,6 +8,7 @@ public class P31_NextPermutation {
     int[] intArray = new int[] { 1,2,3 };
     new P31_NextPermutation().nextPermutation(intArray);
     for (int i : intArray) {
+		
       System.out.printf("%d\t",i);
 
     }
