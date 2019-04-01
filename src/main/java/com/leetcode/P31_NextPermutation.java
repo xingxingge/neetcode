@@ -5,8 +5,12 @@ import org.junit.Test;
 public class P31_NextPermutation {
   public static void main(String[] args) {
     //    int[] intArray = new int[]{10,9,8,7,6};
-    int[] intArray = new int[] { 1 };
+    int[] intArray = new int[] { 1,2,3 };
     new P31_NextPermutation().nextPermutation(intArray);
+    for (int i : intArray) {
+      System.out.printf("%d\t",i);
+
+    }
 //    Arrays.stream(intArray).forEach(System.out::println);
 
   }
