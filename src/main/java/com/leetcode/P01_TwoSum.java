@@ -9,39 +9,55 @@ import java.util.Map;
  * /**
  * Given an array of integers, return indices of the two numbers such that they
  * add up to a specific target.
- *
+ * <p>
  * You may assume that each input would have exactly one solution, and you may
  * not use the same element twice.
- *
+ * <p>
  * Example:
- *
+ * <p>
  * Given nums = [2, 7, 11, 15], target = 9,
- *
+ * <p>
  * Because nums[0] + nums[1] = 2 + 7 = 9,
  * return [0, 1].
  */
 public class P01_TwoSum {
+  private int[] nums = new int[] { 4, 7, 5, 3, 6, 8 };
+  int target=8;
 
   @Test
   public void test() {
-//    int[] nums = new int[]{1, 2, 3, 6, 5};
-    int[] nums = new int[]{5, 6, 3, 1, 2};
-    int target = 5;
-//    int[] ints = bruteForce(nums, target);
-//    int[] ints = twoPassHashTable(nums, target);
-    int[] ints = onePassHashTable(nums, target);
+    int[] ints = bruteForce(nums, target);
     for (int i = 0; i < ints.length; i++) {
       System.out.println(ints[i]);
-
     }
+    System.out.println("----------------------");
+  }
+
+  @Test
+  public void test2() {
+        int[] ints = twoPassHashTable(nums, target);
+    for (int i = 0; i < ints.length; i++) {
+      System.out.println(ints[i]);
+    }
+    System.out.println("----------------------");
+  }
+
+  @Test
+  public void test3() {
+        int[] ints = onePassHashTable(nums, target);
+    for (int i = 0; i < ints.length; i++) {
+      System.out.println(ints[i]);
+    }
+    System.out.println("----------------------");
+
   }
 
   /**
    * 复杂度分析：
-   *
+   * <p>
    * 时间复杂度：O(n^2)， 对于每个元素，我们试图通过遍历数组的其余部分来寻找它所对应的目标元素，
    * 这将耗费 O(n)的时间。因此时间复杂度为 O(n^2)。
-   *
+   * <p>
    * 空间复杂度：O(1)。
    */
   public int[] bruteForce(int[] nums, int target) {
@@ -51,7 +67,7 @@ public class P01_TwoSum {
     for (int i = 0; i < nums.length; i++) {
       for (int j = i + 1; j < nums.length; j++) {
         if (nums[i] + nums[j] == target) {
-          return new int[]{i, j};
+          return new int[] { i, j };
         }
       }
     }
@@ -61,7 +77,7 @@ public class P01_TwoSum {
   /**
    * 两遍哈希表法
    * 复杂度分析：
-   *
+   * <p>
    * 时间复杂度：O(n)， 我们把包含有 n 个元素的列表遍历两次。哈希表将查找时间缩短到 O(1)
    * 注意：当出现哈希冲突时，由于需要遍历哈希桶上的链表，有可能查找时间变成O(n)
    * 空间复杂度：O(n)， 所需的额外空间取决于哈希表中存储的元素数量，该表中存储了 n 个元素。
@@ -74,8 +90,9 @@ public class P01_TwoSum {
     }
     for (int i = 0; i < nums.length; i++) {
       int complement = target - nums[i];
+      //map.get(complement) != i,防止complement是nums[i]本身，例如4,7,5,6  target:8
       if (map.containsKey(complement) && map.get(complement) != i) {
-        return new int[]{i, map.get(complement)};
+        return new int[] { i, map.get(complement) };
       }
 
     }
@@ -89,9 +106,10 @@ public class P01_TwoSum {
    * 数组在开头部分就能得到需要的值，时间复杂度和空间复杂度都降低)。
    * 时间复杂度：O(n)， 我们只遍历了包含有 n 个元素的列表一次。
    * 在表中进行的每次查找只花费 O(1) 的时间。
-
-   空间复杂度：O(n)， 所需的额外空间取决于哈希表中存储的元素数量，
-   该表最多需要存储 n个元素。
+   * <p>
+   * 空间复杂度：O(n)， 所需的额外空间取决于哈希表中存储的元素数量，
+   * 该表最多需要存储 n个元素。
+   *
    * @param nums
    * @param target
    * @return
@@ -102,7 +120,7 @@ public class P01_TwoSum {
       int complement = target - nums[i];
       Integer integer = map.get(complement);
       if (integer != null) {
-        return new int[]{integer, i};
+        return new int[] { integer, i };
       }
       map.put(nums[i], i);
     }
