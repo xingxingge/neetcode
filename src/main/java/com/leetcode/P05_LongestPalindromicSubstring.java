@@ -13,37 +13,66 @@ public class P05_LongestPalindromicSubstring {
     System.out.println(manacher(s));
   }
 
+  @Test
+  public void dynamicProgramming(){
+    String s="abcdcbb";
+    System.out.println(dynamicProgramming(s));
+  }
+  @Test
+  public void expandCenterTest(){
+    String s="abcdcba";
+    System.out.println(expandCenter(s));
+  }
+
   /**
    * 中心扩展法，移动中心点,考虑abba这种情况
    */
   public String expandCenter(String s) {
-    if (s == null || s.length() == 0) return "";
-    int left = 0, right = 0;
+    if (s == null || s.length() < 1){
+      return "";
+    }
+
+    // 初始化最大回文子串的起点和终点
+    int start = 0;
+    int end   = 0;
+
+    // 遍历每个位置，当做中心位
     for (int i = 0; i < s.length(); i++) {
-      int len1 = expandCenter(s, i, i);
-      int len2 = expandCenter(s, i, i + 1);
-      int len = Math.max(len1, len2);
-      if (len > right - left) {//大于最长长度
-        left = i - ((len - 1) >> 1);
-        right = i + (len >> 1);
+      // 分别拿到奇数偶数的回文子串长度
+      //奇数长度
+      int len_odd = expandCenter(s,i,i);
+      //偶数长度
+      int len_even = expandCenter(s,i,i + 1);
+      // 对比最大的长度
+      int len = Math.max(len_odd,len_even);
+      // 计算对应最大回文子串的起点和终点
+      if (len > end - start){
+        start = i - (len - 1)/2;
+        end = i + len/2;
       }
     }
-    left = (left >= 0 ? left : 0);
-    right = (right < s.length() ? right : s.length());
-    return s.substring(left, right + 1);
-
+    // 注意：这里的end+1是因为 java自带的左闭右开的原因
+    return s.substring(start,end + 1);
   }
 
+
   /**
-   * 从两点向外部扩展，找到子串
+   *
+   * @param s             输入的字符串
+   * @param left          起始的左边界
+   * @param right         起始的右边界
+   * @return              回文串的长度
    */
-  private int expandCenter(String s, int left, int right) {
-    int l = left, r = right;
-    while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
-      l--;
-      r++;
+  private int expandCenter(String s,int left,int right){
+    // left = right 的时候，此时回文中心是一个字符，回文串的长度是奇数
+    // right = left + 1 的时候，此时回文中心是一个空隙，回文串的长度是偶数
+    // 跳出循环的时候恰好满足 s.charAt(left) ！= s.charAt(right)
+    while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
+      left--;
+      right++;
     }
-    return r - l - 1;
+    // 回文串的长度是right-left+1-2 = right - left - 1
+    return right - left - 1;
   }
 
   /**
@@ -57,6 +86,7 @@ public class P05_LongestPalindromicSubstring {
    * P(i, i) = true
    *
    * P(i, i+1) = ( S_i == S_{i+1} )
+   * //原则，先填写左下方，再填写变得，因为要通过判断[i+1][j-1]得到[i][j]
    */
   public String dynamicProgramming(String s) {
     boolean[][] dp = new boolean[s.length()][s.length()];
@@ -71,7 +101,7 @@ public class P05_LongestPalindromicSubstring {
         if (i == j) {
           dp[i][j] = true;
         } else {
-          // combine base case 2 and general case into one line
+          // combine base case 2 and general case into one line  //边界，j=i+1时，可能左下方的元素还没计算出来，所以需要这样判断
           dp[i][j] = (s.charAt(i) == s.charAt(j)) && (dp[i + 1][j - 1] || j == i + 1);
         }
 
